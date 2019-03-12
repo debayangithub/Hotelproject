@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+{% extends 'superIndex/base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block body_block %}
+<br><br>
+<div class="row">
+  <div class="col-md-2">
+
+  </div>
+  <div class="col-md-8">
+    <div class='jumbotron'>
+      <h1>Please Login</h1><br>
+      <form action="{% url 'superIndex:login' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="username">Username : </label>
+          <input class="form-control" type="text" name='username' placeholder="Enter Username">
+          <label for="password">Password :</label>
+          <input class="form-control" type="text" name="password"><BR><br>
+          <input type="submit" value="Login" class="btn btn-success">
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+  <div class="col-md-2">
+
+  </div>
+</div>
+    </form>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<title>CozyNest</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'carausel/carausel.css' %}">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="{% static 'carausel/carausel.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="{% url 'index'%}" class="w3-bar-item w3-button"><b>HotelGrandPalace</b></a>
+    <a href="{% url 'admin:index'%}" class="w3-bar-item w3-button">Admin</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#projects" class="w3-bar-item w3-button">Rooms</a>
+      {% if user.is_authenticated %}
+
+        <a href="{% url 'logout' %}" class="w3-bar-item w3-button">Logout</a>
+
+      {% else %}
+
+        <a href="{% url 'superIndex:login' %}" class="w3-bar-item w3-button">Login</a>
+
+      {% endif %}
+
+      <a href="{% url 'superIndex:registration' %}" class="w3-bar-item w3-button">Sign Up</a>
+    </div>
+  </div>
+  </div>
+
+<div class="container">
+  <br>
+  {% block body_block %}
+  <!-- Anything you extend on this will be inherited in the templates -->
+  {% endblock %}
+<br>
